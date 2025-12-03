@@ -1,34 +1,4 @@
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-}
-
-h1 {
-  -webkit-font-smoothing: antialiased;
-  font-family: "Roboto";
-  font-size: 1.5em;
-  font-weight: 100;
-  color: rgb(27, 38, 59);
-  overflow-wrap: break-word;
-  font-style: normal;
-  line-height: normal;
-}
-
-h2 {
-  color: rgb(27, 38, 59);
-  font-family: "Inria Sans";
-  font-size: 1.5em;
-  font-weight: 500;
-  -webkit-font-smoothing: antialiased;
-}
-
-p {
-  color: rgb(27, 38, 59);
-  font-family: "Belgrano";
-  font-size: 1em;
-  font-weight: 400;
-  overflow-wrap: break-word;
-  -webkit-font-smoothing: antialiased;
 }

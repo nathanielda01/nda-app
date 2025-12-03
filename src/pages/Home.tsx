@@ -1,14 +1,13 @@
-import React from 'react';
-import Text from '../components/Text';
+import React from "react";
+import { Link } from "react-router";
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <div>
-      <Text type='title'>Heading</Text>
-      <Text type='sub'>This is the home page of our application.</Text>
-      <Text>Feel free to look around and explore the features we offer.</Text>
+      <h2>Home Page</h2>
+      <p>Welcome to the home page of the NDA Application.</p>
+
+      <Link to="/projects">Go to Projects</Link>
     </div>
   );
 };
-
-export default Home;
