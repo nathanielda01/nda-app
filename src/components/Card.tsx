@@ -15,7 +15,9 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = (props) => {
   return (
     <article key={props.key} className='card-container'>
       <img className='card-img' src={imgSource} alt="Card Image" />
+      <div className='card-body'>
         <h3 className='card-title'>{props.title || 'Sample Card Title'}</h3>
+      </div>
     </article>
   )
 };
