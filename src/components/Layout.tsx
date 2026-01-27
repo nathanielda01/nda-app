@@ -1,22 +1,45 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+import { Layout, Typography, Menu } from 'antd';
 
-export const Header: React.FC<React.PropsWithChildren> = (props) => {
-  const view: React.CSSProperties = {
-    padding: '10px',
-    backgroundColor: '#282c34',
-    color: 'white',
-    textAlign: 'center',
-    width: '100%',
+const { Header, Footer, Content } = Layout;
+const { Title } = Typography;
+
+export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
+  const navigate = useNavigate();
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    switch (key) {
+      case '1':
+        navigate('/');
+        break;
+      case '2':
+        navigate('/projects');
+        break;
+      default:
+        break;
+    }
   };
-  
+
   return (
-    <header style={ view }>
+    <Header style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+      <Title style={{ color: 'white', margin: 0 }} level={2}>NDA Portal</Title>
+      <Menu
+        theme="dark" 
+        mode="horizontal" 
+        defaultSelectedKeys={['1']}
+        style={{ flex: 1, minWidth: 0 }}
+        onClick={handleMenuClick}
+      >
+        <Menu.Item key="1">Home</Menu.Item>
+        <Menu.Item key="2">Projects</Menu.Item>
+      </Menu>
       { props.children }
-    </header>
+    </Header>
   );
 };
 
-export const Footer: React.FC<React.PropsWithChildren> = (props) => {
+export const SiteFooter: React.FC<React.PropsWithChildren> = (props) => {
   const view: React.CSSProperties = {
     padding: '10px',
     backgroundColor: '#f1f1f1',
@@ -26,8 +49,34 @@ export const Footer: React.FC<React.PropsWithChildren> = (props) => {
   };
 
   return (
-    <footer style={ view }>
+    <Footer style={ view }>
       { props.children }
-    </footer>
+    </Footer>
   );
+};
+
+export const DefaultLayout: React.FC<React.PropsWithChildren> = (props) => {
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <SiteHeader />
+      <Content style={{ margin: '0 20px' }}>
+        { props.children }
+      </Content>
+      <SiteFooter>
+        <p>&copy; 2025 NDA Projects. All rights reserved.</p>
+      </SiteFooter>
+    </Layout>
+  );
+};
+
+interface WithDefaultLayoutProps {
+  [key: string]: unknown;
+}
+
+export const withDefaultLayout = (WrappedComponent: React.ComponentType<WithDefaultLayoutProps>) => {
+  return (
+    <DefaultLayout>
+      <WrappedComponent />
+    </DefaultLayout>
+  )
 };

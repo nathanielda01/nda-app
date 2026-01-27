@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Tic tac toe — O">
+
+<!-- O style -->
+  <g stroke="#1f78d1" stroke-width="12" fill="none">
+    <!-- O -->
+    <circle cx="48" cy="48" r="36"/>
+  </g>
+
+</svg>
