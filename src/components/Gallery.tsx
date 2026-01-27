@@ -1,17 +1,25 @@
 import React from "react";
+import { Flex } from "antd";
+import { useNavigate } from "react-router";
 
-import Card from "./Card";
-import './Gallery.css';
+import ProjectCard from "./ProjectCard";
 
 const Gallery: React.FC<React.PropsWithChildren> = (props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/projects/tic-tac-toe');
+  };
+
   return (
-    <div className='gallery-container'>
-      <Card 
+    <Flex wrap={true} gap='middle'>
+      <ProjectCard 
         key='card-1'
         title='Tic-Tac-Toe Game'
         imgSrc='../src/assets/tic-tac-toe.svg'
+        onClick={handleClick}
       />
-    </div>
+    </Flex>
   );      
 };
 

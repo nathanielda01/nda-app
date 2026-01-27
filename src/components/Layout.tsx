@@ -8,6 +8,11 @@ const { Title } = Typography;
 export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
   const navigate = useNavigate();
 
+  const menuItems = [
+    { key: '1', label: 'Home' },
+    { key: '2', label: 'Projects' },
+  ];
+
   const handleMenuClick = ({ key }: { key: string }) => {
     switch (key) {
       case '1':
@@ -28,12 +33,10 @@ export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
         theme="dark" 
         mode="horizontal" 
         defaultSelectedKeys={['1']}
+        items={menuItems}
         style={{ flex: 1, minWidth: 0 }}
         onClick={handleMenuClick}
-      >
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Projects</Menu.Item>
-      </Menu>
+      />
       { props.children }
     </Header>
   );
