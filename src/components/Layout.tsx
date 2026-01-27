@@ -1,29 +1,22 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import { Layout, Typography, Menu } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
 export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const [selectedMenuKey] = useState(location.state?.key || 'home');
 
   const menuItems = [
-    { key: '1', label: 'Home' },
-    { key: '2', label: 'Projects' },
+    { key: 'home', label: 'Home' },
+    { key: 'projects', label: 'Projects' },
   ];
 
   const handleMenuClick = ({ key }: { key: string }) => {
-    switch (key) {
-      case '1':
-        navigate('/');
-        break;
-      case '2':
-        navigate('/projects');
-        break;
-      default:
-        break;
-    }
+    navigate(key === 'home' ? '/' : `/${key}`, { state: { key } });
   };
 
   return (
@@ -31,8 +24,8 @@ export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
       <Title style={{ color: 'white', margin: 0 }} level={2}>NDA Portal</Title>
       <Menu
         theme="dark" 
-        mode="horizontal" 
-        defaultSelectedKeys={['1']}
+        mode="horizontal"
+        selectedKeys={[selectedMenuKey]}
         items={menuItems}
         style={{ flex: 1, minWidth: 0 }}
         onClick={handleMenuClick}
