@@ -9,7 +9,7 @@ export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
   const location = useLocation();
   console.log({location});
   const navigate = useNavigate();
-  const [selectedMenuKey] = useState(location.state?.key || 'home');
+  const [selectedMenuKey] = useState(location?.pathname.split('/')[1] || 'home');
 
   const menuItems = [
     { key: 'home', label: 'Home' },
