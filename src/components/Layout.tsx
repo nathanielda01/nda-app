@@ -7,6 +7,7 @@ const { Title } = Typography;
 
 export const SiteHeader: React.FC<React.PropsWithChildren> = (props) => {
   const location = useLocation();
+  console.log({location});
   const navigate = useNavigate();
   const [selectedMenuKey] = useState(location.state?.key || 'home');
 

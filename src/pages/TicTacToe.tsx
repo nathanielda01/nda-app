@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Space, Typography } from 'antd';
+import { useEffect, useState } from 'react';
+import { Button, Space, Tooltip, Typography } from 'antd';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+
+import GameGrid from '../components/TicTacToe/GameGrid';
 
 const { Title } = Typography;
 
-const GRID_IMAGE_URL = "../src/assets/game-grid.svg";
 const X_IMAGE_URL = "../src/assets/game-x.svg";
 const O_IMAGE_URL = "../src/assets/game-o.svg";
 
@@ -60,20 +62,17 @@ export default function TicTacToe() {
 
   return (
     <div>
-      <Title level={2}>Tic-Tac-Toe Game</Title>
-      <div
-        style={{
-          backgroundImage: `url(${GRID_IMAGE_URL})`,
-          width: '300px',
-          height: '300px',
-          backgroundSize: 'cover',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignContent: 'center',
-          justifyContent: 'center',
-          gap: '10px',
-        }}
-      >
+      <Space align='center'>
+        <Tooltip title="Back to Projects">
+          <Button
+            shape='circle'
+            icon={<ArrowLeftOutlined />}
+            href='/projects'
+          />
+        </Tooltip>
+        <Title level={2} style={{ margin: '20px 0' }}>Tic-Tac-Toe Game</Title>
+      </Space>
+      <GameGrid>
         {
           gameState.map((gameSquareContent, index) => {
             let icon = <></>;
@@ -106,7 +105,7 @@ export default function TicTacToe() {
             />
           })
         }
-      </div>
+      </GameGrid>
       <Space align='center' size='large'>
         <Button
           onClick={startNewGame}
